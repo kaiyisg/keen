@@ -364,9 +364,22 @@ public class SecurePaymentActivity extends Activity {
             if (resultCode == RESULT_OK){
                 //Once the secure payment activity completes the result and its extras can be worked with
                 Payment payment = data.getParcelableExtra(Intents.EXTRA_PAYMENT);
-                Toast.makeText(getApplicationContext(), getString(R.string.payment_successful, payment.getOrder().getId()), Toast.LENGTH_SHORT).show();
+                Intent mainIntent = new Intent(SecurePaymentActivity.this, PhoneEntryActivity.class);
+                SecurePaymentActivity.this.startActivity(mainIntent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                SecurePaymentActivity.this.finish();
+                //Toast.makeText(getApplicationContext(), getString(R.string.payment_successful, payment.getOrder().getId()), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.payment_failed), Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent mainIntent = new Intent(SecurePaymentActivity.this, AdvertismentActivity.class);
+                        SecurePaymentActivity.this.startActivity(mainIntent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        SecurePaymentActivity.this.finish();
+                    }
+                }, 500);
+                //Toast.makeText(getApplicationContext(), getString(R.string.payment_failed), Toast.LENGTH_SHORT).show();
             }
         }
     }
