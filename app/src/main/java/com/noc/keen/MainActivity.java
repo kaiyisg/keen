@@ -1,6 +1,9 @@
 package com.noc.keen;
 
+import android.accounts.Account;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +11,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.clover.sdk.util.CloverAccount;
+import com.clover.sdk.v1.BindingException;
+import com.clover.sdk.v1.ClientException;
+import com.clover.sdk.v1.ServiceException;
+import com.clover.sdk.v1.merchant.MerchantConnector;
+import com.clover.sdk.v3.inventory.InventoryConnector;
+import com.clover.sdk.v3.inventory.Item;
+import com.clover.sdk.v1.merchant.Merchant;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Account mAccount;
+    private InventoryConnector mInventoryConnector;
+    private MerchantConnector mMerchantConnector;
+    private TextView mMerchantTextView;
+    private TextView mInventoryTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +45,36 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mMerchantTextView = (TextView) findViewById(R.id.merchantName);
+        mInventoryTextView = (TextView) findViewById(R.id.inventoryItem);
+
+        //Retrieve Clover account
+        if (mAccount == null) {
+            mAccount = CloverAccount.getAccount(this);
+
+            if (mAccount == null) {
+                return;
+            }
+        }
+
+        connectInventory();
+        connectMerchant();
+
+        //new MerchantAsyncTask().execute();
+        //new InventoryAsyncTask().execute();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disconnectInventory();
+        disconnectMerchant();
     }
 
     @Override
@@ -48,5 +97,80 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void connectMerchant() {
+        disconnectMerchant();
+
+        if (mAccount != null) {
+            mMerchantConnector = new MerchantConnector(this, mAccount, null);
+            mMerchantConnector.connect();
+        }
+    }
+
+    private void disconnectMerchant() {
+        if (mMerchantConnector != null) {
+            mMerchantConnector.disconnect();
+            mMerchantConnector = null;
+        }
+    }
+
+    private void connectInventory() {
+        disconnectInventory();
+
+        if (mAccount != null ) {
+            mInventoryConnector = new InventoryConnector(this, mAccount, null);
+            mInventoryConnector.connect();
+        }
+    }
+
+    private void disconnectInventory() {
+        if (mInventoryConnector != null) {
+            mInventoryConnector.disconnect();
+            mInventoryConnector = null;
+        }
+    }
+
+    private class InventoryAsyncTask extends AsyncTask<Void, Void, Item> {
+
+        @Override
+        protected Item doInBackground(Void... voids) {
+            try {
+                return mInventoryConnector.getItems().get(0);
+            } catch (RemoteException | ClientException | ServiceException | BindingException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected final void onPostExecute(Item item) {
+            super.onPostExecute(item);
+            if(item != null) {
+                mInventoryTextView.setText("Item: " + item.getName());
+            }
+        }
+
+    }
+
+    private class MerchantAsyncTask extends AsyncTask<Void, Void, Merchant> {
+
+        @Override
+        protected Merchant doInBackground(Void... voids) {
+            try {
+                return mMerchantConnector.getMerchant();
+            } catch (ServiceException | BindingException | ClientException | RemoteException e) {
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Merchant merchant) {
+            super.onPostExecute(merchant);
+            mMerchantTextView.setText("Merchant Name: " + merchant.getName());
+        }
     }
 }
