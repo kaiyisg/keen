@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:background="@drawable/starbucks_background"
     tools:context="com.noc.keen.ui.MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <ImageView
-            android:layout_width="match_parent"
+        <FrameLayout
             android:layout_height="match_parent"
-            app:srcCompat="@android:drawable/alert_dark_frame"
-            tools:context=".ui.MainActivity"
-            android:id="@+id/logo" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="400dp"
+            android:layout_marginLeft="50dp"
+            android:background="@color/colorBackground">
 
             <TextView
-                android:text="Touch Anywhere To Continue"
+                android:text="@string/detail_prompt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="58sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp">
+
+            <com.andexert.library.RippleView
+                android:id="@+id/buy_now_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="41dp"
-                android:textSize="20dp"
-                android:textColor="#ffff00ff"
-                android:id="@+id/textView" />
-        </RelativeLayout>
+                rv_centered="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/buy_now_button"
+                    android:layout_centerInParent="true"/>
+
+            </com.andexert.library.RippleView>
+
+        </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp">
+
+        <com.andexert.library.RippleView
+            android:id="@+id/more_info_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            rv_centered="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/more_info_button"
+                android:layout_centerInParent="true"/>
+
+        </com.andexert.library.RippleView>
 
     </FrameLayout>
 
-    <include layout="@layout/content_main" />
-
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

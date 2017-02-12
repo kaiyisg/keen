@@ -35,4 +35,5 @@
     <string name="mytag_value">buynow</string>
     <string name="buynow_value">buynow</string>
     <string name="getinfo_value">getinfo_value</string>
+    <string name="detail_prompt">Its raining and cold right now, care to have a hot drink at 50% off? Yours, just two blocks away</string>
 </resources>

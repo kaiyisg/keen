@@ -1,6 +1,7 @@
 package com.noc.keen.ui;
 
 import android.accounts.Account;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,10 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.clover.sdk.util.CloverAccount;
 import com.clover.sdk.v1.BindingException;
 import com.clover.sdk.v1.ClientException;
@@ -33,14 +33,35 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView mMerchantTextView;
     private TextView mInventoryTextView;
 
+    private RippleView mBuynowButton;
+    private RippleView mMoreinfoButton;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_main);
+        mContext = this;
 
-        ImageView iv = (ImageView) findViewById(R.id.logo);
-        iv.setOnTouchListener(this);
+        mBuynowButton = (RippleView) findViewById(R.id.buy_now_button);
+        mMoreinfoButton = (RippleView) findViewById(R.id.more_info_button);
+
+        mBuynowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CustomTenderActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mMoreinfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     public boolean onTouch(View v, MotionEvent event) {
@@ -53,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onResume() {
         super.onResume();
 
-        mMerchantTextView = (TextView) findViewById(R.id.merchantName);
-        mInventoryTextView = (TextView) findViewById(R.id.inventoryItem);
+        //mMerchantTextView = (TextView) findViewById(R.id.merchantName);
+        //mInventoryTextView = (TextView) findViewById(R.id.inventoryItem);
 
         //Retrieve Clover account
         if (mAccount == null) {
@@ -65,11 +86,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
         }
 
-        connectInventory();
-        connectMerchant();
+        //connectInventory();
+        //connectMerchant();
 
-        new MerchantAsyncTask().execute();
-        new InventoryAsyncTask().execute();
+        //new MerchantAsyncTask().execute();
+        //new InventoryAsyncTask().execute();
     }
 
     @Override
