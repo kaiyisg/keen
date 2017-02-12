@@ -17,8 +17,8 @@ public class PhoneEntryActivity extends AppCompatActivity {
         Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_phone_entry);
 
-        EditText text = (EditText) findViewById(R.id.editTextId);
+        //EditText text = (EditText) findViewById(R.id.editTextId);
         //PhoneNumberUtils.formatNumber(text.getText().toString());
-        text.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        //text.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
 }
