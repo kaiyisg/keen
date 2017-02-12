@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mBuynowButton.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent intent = new Intent(mContext, TenderActivity.class);
+                Intent intent = new Intent(mContext, SecurePaymentActivity.class);
                 startActivity(intent);
             }
         });

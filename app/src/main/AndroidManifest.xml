@@ -4,9 +4,10 @@
 
     <uses-sdk android:minSdkVersion="17" />
 
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="clover.permission.ACTION_PAY"/>
 
     <application
         android:name=".KeenApplication"
@@ -57,7 +58,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.AdvertismentActivity" />
         <activity android:name=".ui.ItemDetailActivity" />
-        <activity android:name=".ui.TenderActivity"></activity>
+        <activity android:name=".ui.TenderActivity" />
+        <activity android:name=".ui.WebViewActivity" />
+        <activity android:name=".ui.SecurePaymentActivity"></activity>
     </application>
 
 </manifest>
