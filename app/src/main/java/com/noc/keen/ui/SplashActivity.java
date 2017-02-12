@@ -1,10 +1,12 @@
-package com.noc.keen;
+package com.noc.keen.ui;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.view.WindowManager;
+
+import com.noc.keen.R;
+import com.noc.keen.helper.Utils;
 
 public class SplashActivity extends AppCompatActivity {
     private static final int SPLASH_LENGTH = 1000;
@@ -12,8 +14,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(new Runnable() {

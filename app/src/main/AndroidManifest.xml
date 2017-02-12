@@ -13,12 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,13 +28,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LandingPage"
+            android:name=".ui.LandingPageActivity"
             android:label="LandingPage"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".CustomTenderActivity"
+            android:name=".ui.CustomTenderActivity"
             android:exported="true"
             android:label="@string/title_activity_tender"
             android:screenOrientation="landscape"
@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PhoneEntryActivity"
+        <activity android:name=".ui.PhoneEntryActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

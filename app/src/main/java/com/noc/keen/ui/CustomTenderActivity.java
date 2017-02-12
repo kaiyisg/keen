@@ -1,4 +1,4 @@
-package com.noc.keen;
+package com.noc.keen.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import com.clover.sdk.v1.Intents;
 import com.clover.sdk.v1.tender.Tender;
 import com.clover.sdk.v1.tender.TenderConnector;
 import com.clover.sdk.v3.payments.ServiceChargeAmount;
+import com.noc.keen.R;
 import com.noc.keen.helper.Utils;
 
 import java.util.ArrayList;
@@ -27,12 +28,10 @@ public class CustomTenderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_custom_tender);
 
         setResult(RESULT_CANCELED);
-
-        // Necessary for Customer Facing user experiences
-        setSystemUiVisibility();
 
         /**
          * @see Intents.ACTION_CUSTOMER_TENDER
@@ -53,17 +52,6 @@ public class CustomTenderActivity extends AppCompatActivity {
         final long tipAmount = getIntent().getLongExtra(Intents.EXTRA_TIP_AMOUNT, 0);
 
         setupViews(amount, currency, orderId, merchantId);
-    }
-
-    public void setSystemUiVisibility() {
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LOW_PROFILE
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
     public void setupViews(final long amount, Currency currency, String orderId, String merchantId) {

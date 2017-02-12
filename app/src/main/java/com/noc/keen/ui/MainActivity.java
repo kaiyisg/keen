@@ -1,4 +1,4 @@
-package com.noc.keen;
+package com.noc.keen.ui;
 
 import android.accounts.Account;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ import com.clover.sdk.v1.merchant.Merchant;
 import com.clover.sdk.v1.merchant.MerchantConnector;
 import com.clover.sdk.v3.inventory.InventoryConnector;
 import com.clover.sdk.v3.inventory.Item;
+import com.noc.keen.R;
+import com.noc.keen.helper.Utils;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_main);
 
         ImageView iv = (ImageView) findViewById(R.id.logo);
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public boolean onTouch(View v, MotionEvent event) {
-        Intent intent = new Intent(this, LandingPage.class);
+        Intent intent = new Intent(this, LandingPageActivity.class);
         startActivity(intent);
         return true;
     }
