@@ -6,6 +6,10 @@
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,8 +35,7 @@
             android:name=".ui.LandingPageActivity"
             android:label="LandingPage"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.CustomTenderActivity"
             android:exported="true"
@@ -42,16 +45,19 @@
             <meta-data
                 android:name="clover.intent.meta.CUSTOMER_TENDER_IMAGE"
                 android:resource="@mipmap/thirdparty_white_example" />
+
             <intent-filter>
                 <action android:name="clover.intent.action.CUSTOMER_TENDER" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.PhoneEntryActivity"
+        <activity
+            android:name=".ui.PhoneEntryActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.AdvertismentActivity" />
+        <activity android:name=".ui.ItemDetailActivity"></activity>
     </application>
 
 </manifest>

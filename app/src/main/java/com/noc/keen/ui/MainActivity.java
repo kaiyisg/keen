@@ -47,13 +47,29 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mBuynowButton = (RippleView) findViewById(R.id.buy_now_button);
         mMoreinfoButton = (RippleView) findViewById(R.id.more_info_button);
 
-        mBuynowButton.setOnClickListener(new View.OnClickListener() {
+        mBuynowButton.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent intent = new Intent(mContext, CustomTenderActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mMoreinfoButton.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Intent intent = new Intent(mContext, ItemDetailActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*mBuynowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, CustomTenderActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         mMoreinfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
