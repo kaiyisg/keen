@@ -27,7 +27,7 @@
         android:layout_width="360dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/phonebg"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_height="490dp">
 
         <LinearLayout
@@ -35,18 +35,26 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="5dp"
-            android:background="@drawable/circle_background"></LinearLayout>
+            android:background="@drawable/circle_background">
+
+            <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="40sp" />
+        </LinearLayout>
     </RelativeLayout>
 
     <GridLayout
-        android:layout_height="wrap_content"
         android:layout_width="360dp"
         android:background="#D6D7D7"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="110dp"
+        android:layout_height="420dp">
 
         <ImageButton
             android:layout_width="120dp"
@@ -155,7 +163,7 @@
             android:id="@+id/cancel"
             android:layout_row="4"
             android:layout_column="2"
-            android:background="@drawable/cancel"
+            android:background="@drawable/delete"
             android:layout_marginLeft="20dp" />
 
         <ImageButton

@@ -61,6 +61,7 @@
     <string name="payment_successful">Payment Succeeded for Order: %1$s</string>
 
     <string name="payment_failed">Payment Not Successful</string>
+    <string name="number_entry_failed">Please enter a valid number</string>
 
     <string name="payment_amount">Payment Amount</string>
 
