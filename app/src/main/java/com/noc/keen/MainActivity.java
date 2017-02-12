@@ -1,6 +1,7 @@
 package com.noc.keen;
 
 import android.accounts.Account;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public boolean onTouch(View v, MotionEvent event) {
-//        Intent intent = new Intent(this, New1.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, LandingPage.class);
+        startActivity(intent);
         return true;
     }
 

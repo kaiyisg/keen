@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@android:drawable/alert_dark_frame"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        tools:ignore="ContentDescription"
+        android:id="@+id/imageView"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="horizontal" android:layout_height="fill_parent" android:layout_width="fill_parent">
+            <LinearLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="0dp">
+
+                <TextView
+                    android:text="Something to buy?"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="50dp"
+                    android:textColor="#ffff00ff"
+                    android:id="@+id/textView3" />
+            </LinearLayout>
+            <LinearLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="0dp">
+
+                <LinearLayout android:orientation="vertical" android:layout_height="fill_parent" android:layout_width="fill_parent">
+                    <LinearLayout android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="fill_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <Button
+                            android:text="Buy Now"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button2"
+                            android:layout_weight="1" />
+                        </LinearLayout>
+
+                    <LinearLayout android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="fill_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <Button
+                            android:text="More info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button"
+                            android:layout_weight="1" />
+                        </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
