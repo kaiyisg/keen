@@ -2,6 +2,10 @@ package com.noc.keen;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.AsyncTask;
+
+import com.clover.sdk.util.CloverAuth;
+import com.noc.keen.helper.AccountManager;
 
 /**
  * Created by kaiyilee on 2/11/17.
@@ -22,6 +26,7 @@ public class KeenApplication extends Application {
 
     static void initCore(KeenApplication ctx) {
         instance = ctx;
+        AccountManager.getCloverAuth(instance, AccountManager.getAccount(instance));
     }
 
     public static void shutdown() {

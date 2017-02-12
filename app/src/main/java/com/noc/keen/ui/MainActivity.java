@@ -23,13 +23,14 @@ import com.clover.sdk.v1.merchant.MerchantConnector;
 import com.clover.sdk.v3.inventory.InventoryConnector;
 import com.clover.sdk.v3.inventory.Item;
 import com.noc.keen.R;
+import com.noc.keen.helper.AccountManager;
 import com.noc.keen.helper.Utils;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
-    private Account mAccount;
     private InventoryConnector mInventoryConnector;
     private MerchantConnector mMerchantConnector;
+    private Account mAccount;
     private TextView mMerchantTextView;
     private TextView mInventoryTextView;
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mBuynowButton.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent intent = new Intent(mContext, CustomTenderActivity.class);
+                Intent intent = new Intent(mContext, TenderActivity.class);
                 startActivity(intent);
             }
         });
@@ -60,21 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             public void onComplete(RippleView rippleView) {
                 Intent intent = new Intent(mContext, ItemDetailActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        /*mBuynowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, CustomTenderActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        mMoreinfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 
@@ -93,14 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         //mMerchantTextView = (TextView) findViewById(R.id.merchantName);
         //mInventoryTextView = (TextView) findViewById(R.id.inventoryItem);
 
-        //Retrieve Clover account
-        if (mAccount == null) {
-            mAccount = CloverAccount.getAccount(this);
-
-            if (mAccount == null) {
-                return;
-            }
-        }
+        mAccount = AccountManager.getAccount(this);
 
         //connectInventory();
         //connectMerchant();
@@ -121,21 +100,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void connectMerchant() {

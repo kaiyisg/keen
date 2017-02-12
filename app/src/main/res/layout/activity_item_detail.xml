@@ -14,13 +14,46 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/productimage"
             android:id="@+id/imageView5"
-            android:layout_weight="1" />
+            android:layout_width="361dp"
+            android:layout_height="242dp" />
+
+        <ImageView
+            android:layout_width="400dp"
+            app:srcCompat="@drawable/details_text"
+            android:id="@+id/imageView6"
+            android:layout_height="315dp"
+            android:layout_marginLeft="65dp" />
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true">
+
+        <com.andexert.library.RippleView
+            android:id="@+id/buy_now_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            rv_centered="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/buy_now_button"
+                android:layout_centerInParent="true"/>
+
+        </com.andexert.library.RippleView>
+
+    </FrameLayout>
 </RelativeLayout>
