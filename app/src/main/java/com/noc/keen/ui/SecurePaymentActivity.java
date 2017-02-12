@@ -6,14 +6,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.RemoteException;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +29,7 @@ import com.clover.sdk.v3.inventory.InventoryConnector;
 import com.clover.sdk.v3.inventory.Item;
 import com.clover.sdk.v3.payments.Payment;
 import com.noc.keen.R;
+import com.noc.keen.helper.Utils;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -52,11 +53,13 @@ public class SecurePaymentActivity extends Activity {
     private CurrencyTextHandler amountHandler;
     private CurrencyTextHandler taxAmountHandler;
     private CurrencyTextHandler tipAmountHandler;
+    private String mOrderId = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_secure_payment);
     }
 
@@ -79,9 +82,20 @@ public class SecurePaymentActivity extends Activity {
         // Create and Connect
         connect();
 
-        payButton = (Button) findViewById(R.id.pay_button);
+        new OrderAsyncTask().execute();
 
-        CheckBox magStripeCheckBox = (CheckBox) findViewById(R.id.mag_stripe_check_box);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startSecurePaymentIntent();
+            }
+        }, 1000);
+
+
+
+        //payButton = (Button) findViewById(R.id.pay_button);
+
+        /*CheckBox magStripeCheckBox = (CheckBox) findViewById(R.id.mag_stripe_check_box);
         CheckBox chipCardCheckBox = (CheckBox) findViewById(R.id.chip_card_check_box);
         CheckBox nfcCheckBox = (CheckBox) findViewById(R.id.nfc_check_box);
         CheckBox manualEntryCheckBox = (CheckBox) findViewById(R.id.manual_entry_check_box);
@@ -122,10 +136,10 @@ public class SecurePaymentActivity extends Activity {
                     advancedOptions.setVisibility(View.GONE);
                 }
             }
-        });
+        });*/
 
 
-        Button createButton = (Button)findViewById(R.id.create_order_button);
+        /*Button createButton = (Button)findViewById(R.id.create_order_button);
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +154,9 @@ public class SecurePaymentActivity extends Activity {
             public void onClick(View v) {
                 startSecurePaymentIntent();
             }
-        });
+        });*/
+
+
 
         tipAmountHandler = new CurrencyTextHandler((EditText)findViewById(R.id.tip_amount_edit_text));
         amountHandler = new CurrencyTextHandler((EditText)findViewById(R.id.amount_edit_text));
@@ -259,8 +275,8 @@ public class SecurePaymentActivity extends Activity {
                 return;
             }
 
-            String orderId = getStringFromEditText(R.id.order_id_edit_text);
-            if (orderId != null) {
+            String orderId = mOrderId;
+            if (!TextUtils.isEmpty(mOrderId)) {
                 intent.putExtra(Intents.EXTRA_ORDER_ID, orderId);
                 //If no order id were passed to EXTRA_ORDER_ID a new empty order would be generated for the payment
             }
@@ -268,7 +284,9 @@ public class SecurePaymentActivity extends Activity {
             //Allow only selected card entry methods
             intent.putExtra(Intents.EXTRA_CARD_ENTRY_METHODS, cardEntryMethodsAllowed);
 
-            CheckBox advancedCheckBox = (CheckBox) findViewById(R.id.show_advanced_check_box);
+            intent.putExtra(Intents.EXTRA_DISABLE_RESTART_TRANSACTION_WHEN_FAILED, true);
+
+            /*CheckBox advancedCheckBox = (CheckBox) findViewById(R.id.show_advanced_check_box);
             if (advancedCheckBox.isChecked()) {
                 boolean restartTxn = getBooleanFromCheckbox(R.id.restart_tx_when_failed_check_box);
                 //for booelans, only need to set it if it does not match the default
@@ -321,7 +339,7 @@ public class SecurePaymentActivity extends Activity {
                     intent.putExtra(Intents.EXTRA_TAX_AMOUNT, taxAmount);
                 }
 
-            }
+            }*/
             dumpIntent(intent);
             startActivityForResult(intent, SECURE_PAY_REQUEST_CODE);
         } catch (ParseException pe) {

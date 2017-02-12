@@ -26,7 +26,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         mBuynowButton.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
-                Intent intent = new Intent(mContext, CustomTenderActivity.class);
+                Intent intent = new Intent(mContext, SecurePaymentActivity.class);
                 startActivity(intent);
             }
         });

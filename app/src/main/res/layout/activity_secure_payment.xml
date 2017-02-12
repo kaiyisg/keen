@@ -1,6 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shopping_bg2">
+
+    <ImageView
+        android:visibility="visible"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        app:srcCompat="@drawable/shopping_store"
+        android:id="@+id/imageView7"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/order_id_layout"
+        android:visibility="gone">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_uuid"
+            android:labelFor="@+id/order_id_edit_text"/>
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_id_edit_text"
+            android:maxLength="13"
+            android:minEms="13"
+            android:inputType="text"
+            android:textAllCaps="true"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/optional"/>
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_order_button"
+            android:text="Create Me One"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/amount_layout"
+        android:visibility="gone">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_amount"
+            android:labelFor="@+id/amount_edit_text"/>
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount_edit_text"
+            android:maxLength="15"
+            android:minEms="15"
+            android:inputType="numberDecimal"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/required"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/tip_amount_layout"
+        android:visibility="gone">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_amount"
+            android:labelFor="@+id/tip_amount_edit_text"/>
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tip_amount_edit_text"
+            android:maxLength="15"
+            android:minEms="15"
+            android:inputType="numberDecimal"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/optional"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tip_amount_layout"
+        android:id="@+id/tax_amount_layout"
+        android:visibility="gone">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tax_amount"
+            android:labelFor="@+id/tax_amount_edit_text"/>
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tax_amount_edit_text"
+            android:maxLength="15"
+            android:minEms="15"
+            android:inputType="numberDecimal"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/optional"/>
+    </LinearLayout>
+
+</RelativeLayout>
+
+<!--
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -8,6 +119,7 @@
         android:padding="16dp"
         tools:context="com.clover.example.paywithsecurepaymentexample.MainActivity"
         android:orientation="vertical">
+
         <LinearLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -270,3 +382,4 @@
 
     </LinearLayout>
 </ScrollView>
+-->
