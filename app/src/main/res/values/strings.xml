@@ -32,4 +32,7 @@
     <string name="note">Note:</string>
     <string name="currency_object">Currency Object:</string>
     <string name="tip_amount">Tip Amount:</string>
+    <string name="mytag_value">buynow</string>
+    <string name="buynow_value">buynow</string>
+    <string name="getinfo_value">getinfo_value</string>
 </resources>

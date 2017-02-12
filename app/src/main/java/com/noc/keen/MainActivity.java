@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView iv = (ImageView) findViewById(R.id.imageView2);
+        ImageView iv = (ImageView) findViewById(R.id.logo);
         iv.setOnTouchListener(this);
     }
 
