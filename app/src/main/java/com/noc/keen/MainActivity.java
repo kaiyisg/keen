@@ -21,8 +21,6 @@ import com.clover.sdk.v1.merchant.MerchantConnector;
 import com.clover.sdk.v3.inventory.InventoryConnector;
 import com.clover.sdk.v3.inventory.Item;
 
-import static com.noc.keen.R.id.imageView2;
-
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
     private Account mAccount;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView iv = (ImageView) findViewById(imageView2);
+        ImageView iv = (ImageView) findViewById(R.id.imageView2);
         iv.setOnTouchListener(this);
     }
 
