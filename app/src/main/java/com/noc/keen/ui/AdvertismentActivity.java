@@ -38,9 +38,9 @@ public class AdvertismentActivity extends AppCompatActivity {
             }
         });
 
-        String token = AccountManager.getToken();
+        /*String token = AccountManager.getToken();
         if (!TextUtils.isEmpty(token)) {
             mToken.setText(token);
-        }
+        }*/
     }
 }
