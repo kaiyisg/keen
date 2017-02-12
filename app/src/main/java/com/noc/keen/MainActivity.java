@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         connectInventory();
         connectMerchant();
 
-        //new MerchantAsyncTask().execute();
-        //new InventoryAsyncTask().execute();
+        new MerchantAsyncTask().execute();
+        new InventoryAsyncTask().execute();
     }
 
     @Override
