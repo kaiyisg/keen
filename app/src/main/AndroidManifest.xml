@@ -28,6 +28,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LandingPage"
+            android:label="LandingPage"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
             android:name=".CustomTenderActivity"
             android:exported="true"
             android:label="@string/title_activity_tender"

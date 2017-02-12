@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             app:srcCompat="@android:drawable/alert_dark_frame"
             tools:context=".MainActivity"
-            android:id="@+id/imageView2" />
+            android:id="@+id/logo" />
 
         <RelativeLayout
             android:layout_width="match_parent"
