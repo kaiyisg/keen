@@ -15,6 +15,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.clover.sdk.util.CloverAccount;
@@ -37,6 +38,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import static com.noc.keen.R.id.imageView7;
+
 
 public class SecurePaymentActivity extends Activity {
 
@@ -54,6 +57,7 @@ public class SecurePaymentActivity extends Activity {
     private CurrencyTextHandler taxAmountHandler;
     private CurrencyTextHandler tipAmountHandler;
     private String mOrderId = "";
+    private boolean mTried = false;
 
 
     @Override
@@ -61,6 +65,8 @@ public class SecurePaymentActivity extends Activity {
         super.onCreate(savedInstanceState);
         Utils.setSystemUiVisibility(this);
         setContentView(R.layout.activity_secure_payment);
+        ImageView iv = (ImageView) findViewById(imageView7);
+        iv.bringToFront();
     }
 
     @Override
@@ -80,16 +86,21 @@ public class SecurePaymentActivity extends Activity {
         }
 
         // Create and Connect
-        connect();
 
-        new OrderAsyncTask().execute();
+        if (!mTried) {
+            connect();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startSecurePaymentIntent();
-            }
-        }, 1000);
+            new OrderAsyncTask().execute();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startSecurePaymentIntent();
+                }
+            }, 1000);
+            mTried = true;
+        }
+
 
 
 
